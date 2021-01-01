@@ -5,7 +5,7 @@ ConfigString::ConfigString(ConfigCollection& configCollection, const std::string
 {
 	this->m_Name = name;
 	this->m_Data = data;
-	configCollection.insert({ name,(ConfigInterface*)this });
+	configCollection.insert({ name,(ConfigInterface*)this});
 }
 
 ConfigString::operator std::string& ()
@@ -21,7 +21,7 @@ ConfigString::operator std::string* ()
 
 void ConfigString::operator=(const std::string& value)
 {
-	(std::string&)*this = value;
+	this->m_Data = value;
 }
 
 std::string& ConfigString::operator()()
@@ -37,5 +37,6 @@ void ConfigString::Write(nlohmann::json& json)
 
 void ConfigString::Read(const nlohmann::json& json)
 {
-	m_Data = json[m_Name];
+	if (json[m_Name].is_string())
+		m_Data = json[m_Name];
 }

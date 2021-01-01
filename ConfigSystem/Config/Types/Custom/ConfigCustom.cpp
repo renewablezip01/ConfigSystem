@@ -20,7 +20,7 @@ ConfigCustom::operator Custom* ()
 
 void ConfigCustom::operator=(Custom value)
 {
-	(Custom&)*this = value;
+	this->m_Data = value;
 }
 
 Custom& ConfigCustom::operator()()
@@ -37,7 +37,10 @@ void ConfigCustom::Write(nlohmann::json& json)
 
 void ConfigCustom::Read(const nlohmann::json& json)
 {
+	if (json[m_Name].is_object())
+	{
 	m_Data.x = json[this->m_Name]["x"];
 	m_Data.y = json[this->m_Name]["y"];
 	m_Data.z = json[this->m_Name]["z"];
+	}
 }

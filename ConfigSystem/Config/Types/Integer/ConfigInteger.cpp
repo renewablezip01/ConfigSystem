@@ -22,7 +22,7 @@ ConfigInteger::operator int* ()
 
 void ConfigInteger::operator=(int value)
 {
-	(int&)*this = value;
+	this->m_Data = value;
 }
 
 int& ConfigInteger::operator()()
@@ -37,6 +37,7 @@ void ConfigInteger::Write(nlohmann::json& json)
 
 void ConfigInteger::Read(const nlohmann::json& json)
 {
-	m_Data = json[m_Name];
+	if (json[m_Name].is_number_integer())
+		m_Data = json[m_Name];
 }
 

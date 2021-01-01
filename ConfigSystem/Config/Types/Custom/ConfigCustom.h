@@ -10,24 +10,20 @@ struct Custom {
 
 class ConfigCustom : virtual public ConfigInterface
 {
-
 public:
-	ConfigCustom(ConfigCollection& configCollection, const std::string& name, Custom data);
-
-public:
+	friend class Serialization;
 	/* Our operator overloads so that our config value can act as the desired data type */
 	operator Custom& ();
 	operator Custom* ();
 	void operator=(Custom value);
 	Custom& operator()();
-
-protected:
+private:
+	ConfigCustom(ConfigCollection& configCollection, const std::string& name, Custom data);
 	/* Defines the way to write into our json */
 	void Write(nlohmann::json& json) override;
 	/* Defines the way to read from our json */
 	void Read(const nlohmann::json& json) override;
 private:
 	Custom m_Data;
-	std::string m_Name;
 };
 

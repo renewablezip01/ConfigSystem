@@ -1,8 +1,9 @@
 #pragma once
-#include "../Config/Types/Integer/ConfigInteger.h"
-#include "../Config/Types/Float/ConfigFloat.h"
-#include "../Config/Types/String/ConfigString.h"
-#include "../Config/Types/Custom/ConfigCustom.h"
+#include "Config/Types/Integer/ConfigInteger.h"
+#include "Config/Types/Float/ConfigFloat.h"
+#include "Config/Types/String/ConfigString.h"
+#include "Config/Types/Custom/ConfigCustom.h"
+#include "Config/Types/Bool/ConfigBool.h"
 
 /// <summary>
 /// Serializes our variables into a local file
@@ -18,12 +19,18 @@ public:
 	/* Getter for our json file */
 	const nlohmann::json GetJson() const;
 
+	ConfigInterface* operator[](const std::string& name) {
+		return m_DataSave[name];
+	}
+
 public:
 	/* Creates a Config Integer variable */
-	ConfigInteger CreateInt(const std::string& name, int value);
-	ConfigFloat CreateFloat(const std::string& name, float value);
-	ConfigString CreateString(const std::string& name, const std::string& value);
-	ConfigCustom CreateCustom(const std::string& name, Custom value);
+	ConfigInteger& CreateInt(const std::string& name, int value);
+	ConfigFloat& CreateFloat(const std::string& name, float value);
+	ConfigBool& CreateBool(const std::string& name, bool value);
+	ConfigString& CreateString(const std::string& name, const std::string& value);
+	ConfigCustom& CreateCustom(const std::string& name, Custom value);
+
 
 private:
 	/* Our default saving/loading path */

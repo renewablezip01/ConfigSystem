@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bootstrap.cpp" />
+    <ClCompile Include="Config\Types\Bool\ConfigBool.cpp" />
     <ClCompile Include="Config\Types\Custom\ConfigCustom.cpp" />
     <ClCompile Include="Config\Types\String\ConfigString.cpp" />
     <ClCompile Include="Config\Types\Float\ConfigFloat.cpp" />
@@ -166,6 +167,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Config\Types\Bool\ConfigBool.h" />
     <ClInclude Include="Config\Types\Custom\ConfigCustom.h" />
     <ClInclude Include="Config\Types\String\ConfigString.h" />
     <ClInclude Include="Config\Types\Float\ConfigFloat.h" />
