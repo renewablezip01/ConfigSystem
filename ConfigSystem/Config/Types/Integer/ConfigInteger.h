@@ -12,7 +12,7 @@ public:
 	operator int&();
 	operator int*();
 	void operator=(int value);
-
+	int& operator()();
 protected:
 	/* Defines the way to write into our json */
 	void Write(nlohmann::json& json) override;

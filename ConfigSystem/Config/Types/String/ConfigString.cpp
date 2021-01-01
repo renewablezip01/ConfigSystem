@@ -24,6 +24,11 @@ void ConfigString::operator=(const std::string& value)
 	(std::string&)*this = value;
 }
 
+std::string& ConfigString::operator()()
+{
+	return this->m_Data;
+}
+
 void ConfigString::Write(nlohmann::json& json)
 {
 	json[m_Name] = m_Data;

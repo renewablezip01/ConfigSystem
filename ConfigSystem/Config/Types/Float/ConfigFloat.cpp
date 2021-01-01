@@ -26,6 +26,11 @@ void ConfigFloat::operator=(float value)
 	(float&)*this = value;
 }
 
+float& ConfigFloat::operator()()
+{
+	return this->m_Data;
+}
+
 void ConfigFloat::Write(nlohmann::json& json)
 {
 	json[m_Name] = m_Data;

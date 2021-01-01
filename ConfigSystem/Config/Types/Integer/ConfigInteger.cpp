@@ -25,6 +25,11 @@ void ConfigInteger::operator=(int value)
 	(int&)*this = value;
 }
 
+int& ConfigInteger::operator()()
+{
+	return this->m_Data;
+}
+
 void ConfigInteger::Write(nlohmann::json& json)
 {
 	json[m_Name] = m_Data;

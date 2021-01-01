@@ -50,3 +50,8 @@ ConfigString Serialization::CreateString(const std::string& name, const std::str
 {
 	return ConfigString(this->m_DataSave,name,value);
 }
+
+ConfigCustom Serialization::CreateCustom(const std::string& name, Custom value)
+{
+	return ConfigCustom(this->m_DataSave, name, value);
+}

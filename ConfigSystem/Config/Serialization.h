@@ -2,6 +2,7 @@
 #include "../Config/Types/Integer/ConfigInteger.h"
 #include "../Config/Types/Float/ConfigFloat.h"
 #include "../Config/Types/String/ConfigString.h"
+#include "../Config/Types/Custom/ConfigCustom.h"
 
 /// <summary>
 /// Serializes our variables into a local file
@@ -22,6 +23,7 @@ public:
 	ConfigInteger CreateInt(const std::string& name, int value);
 	ConfigFloat CreateFloat(const std::string& name, float value);
 	ConfigString CreateString(const std::string& name, const std::string& value);
+	ConfigCustom CreateCustom(const std::string& name, Custom value);
 
 private:
 	/* Our default saving/loading path */

@@ -11,6 +11,7 @@ public:
 	operator float& ();
 	operator float* ();
 	void operator=(float value);
+	float& operator()();
 
 protected:
 	/* Defines the way to write into our json */

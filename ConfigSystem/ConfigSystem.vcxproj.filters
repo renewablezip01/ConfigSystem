@@ -36,6 +36,9 @@
     <ClCompile Include="Config\Types\String\ConfigString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Config\Types\Custom\ConfigCustom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Config\Types\String\ConfigString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\Types\Custom\ConfigCustom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
