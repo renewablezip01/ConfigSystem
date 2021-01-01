@@ -37,11 +37,16 @@ const nlohmann::json Serialization::GetJson() const
 /* Creates a ConfigInteger variable */
 ConfigInteger Serialization::CreateInt(const std::string& name, int value)
 {
-	return ConfigInteger(m_DataSave, name, value);
+	return ConfigInteger(this->m_DataSave, name, value);
 }
 
 ConfigFloat Serialization::CreateFloat(const std::string& name, float value)
 {
-	return ConfigFloat(m_DataSave, name, value);
+	return ConfigFloat(this->m_DataSave, name, value);
 
+}
+
+ConfigString Serialization::CreateString(const std::string& name, const std::string& value)
+{
+	return ConfigString(this->m_DataSave,name,value);
 }

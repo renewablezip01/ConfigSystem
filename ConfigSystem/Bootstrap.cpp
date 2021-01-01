@@ -8,8 +8,10 @@ int main() {
 	ConfigInteger health = serialize.CreateInt("Health", 100);
 	ConfigInteger health2 = serialize.CreateInt("Health2", 99);
 	ConfigFloat speed = serialize.CreateFloat("Speed",84.54f);
+	ConfigString name = serialize.CreateString("Username", "Donkey");
 
 	serialize.Load();
+	name = "ass";
 	std::cout << serialize.GetJson().dump(1) << "\n";
 	std::cout << "-----------------------------------------------------" << "\n";
 	serialize.Save();

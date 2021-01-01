@@ -1,6 +1,7 @@
 #pragma once
 #include "../Config/Types/Integer/ConfigInteger.h"
 #include "../Config/Types/Float/ConfigFloat.h"
+#include "../Config/Types/String/ConfigString.h"
 
 /// <summary>
 /// Serializes our variables into a local file
@@ -20,6 +21,7 @@ public:
 	/* Creates a Config Integer variable */
 	ConfigInteger CreateInt(const std::string& name, int value);
 	ConfigFloat CreateFloat(const std::string& name, float value);
+	ConfigString CreateString(const std::string& name, const std::string& value);
 
 private:
 	/* Our default saving/loading path */
