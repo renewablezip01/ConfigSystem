@@ -35,6 +35,6 @@ void ConfigBool::Write(nlohmann::json& json)
 
 void ConfigBool::Read(const nlohmann::json& json)
 {
-	m_Data = json[this->m_Name];
-
+	if (json[this->m_Name].is_boolean())
+		m_Data = json[this->m_Name];
 }

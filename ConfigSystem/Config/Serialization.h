@@ -9,19 +9,18 @@
 /// Serializes our variables into a local file
 /// </summary>
 
-class Serialization
+typedef class Serialization
 {
 public:
+	static void LoadExample();
+
 	/* Saves the data into a file */
 	void Save(const std::string& path = FilePath);
 	/* Loads data from the file into our m_Json */
 	void Load(const std::string& path = FilePath);
 	/* Getter for our json file */
 	const nlohmann::json GetJson() const;
-
-	ConfigInterface* operator[](const std::string& name) {
-		return m_DataSave[name];
-	}
+	ConfigInterface* operator[](const std::string& name);
 
 public:
 	/* Creates a Config Integer variable */
@@ -39,5 +38,5 @@ private:
 	nlohmann::json m_Json;
 	/* All our creates variables goes into this collection. Will be used to loop through it for Saving/Loading */
 	std::unordered_map<std::string, ConfigInterface*> m_DataSave = std::unordered_map<std::string, ConfigInterface*>();
-};
+} Serializer, ConfigSystem;
 

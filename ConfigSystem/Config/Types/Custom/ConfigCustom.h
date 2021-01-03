@@ -1,5 +1,5 @@
 #pragma once
-#include "Config/ConfigInterface.h"
+#include "Config/Types/ConfigInterface.h"
 /// <summary>
 /// This is an example of how a custom data type can be done.
 /// </summary>

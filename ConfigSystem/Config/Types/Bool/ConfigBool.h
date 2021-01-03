@@ -1,5 +1,5 @@
 #pragma once
-#include "Config/ConfigInterface.h"
+#include "Config/Types/ConfigInterface.h"
 
 class ConfigBool : virtual public ConfigInterface
 {

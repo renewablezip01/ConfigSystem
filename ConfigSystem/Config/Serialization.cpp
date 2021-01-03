@@ -4,6 +4,35 @@
 /* Our default file path for saving/loading */
 std::string Serialization::FilePath = "Save.json";
 
+void Serialization::LoadExample()
+{
+	Serialization serialize;
+	/* Initiliaze the wanted variables */
+
+	ConfigInteger& health = serialize.CreateInt("Health", 100);
+	ConfigFloat& speed = serialize.CreateFloat("Speed", 184.54f);
+	ConfigString& name = serialize.CreateString("Username", "Johnnyyyyy");
+	ConfigCustom& customType = serialize.CreateCustom("CustomTypeExample", { 76.7f, 436.3f, 8677.3f });
+	ConfigBool& rememberMe = serialize.CreateBool("Remember me", true);
+
+	/* Loads the saved data from our storage */
+	serialize.Load();
+
+	/* Modify variables after the Serialization::Load(); */
+	health = 54;
+	speed = 848.4f;
+
+	/* Example of a cast */
+	ConfigString* castedName = dynamic_cast<ConfigString*>(serialize["Username"]);
+	if (castedName != nullptr)
+		*castedName = "Max";
+
+	/* Call save whenever you want to save the data */
+	serialize.Save();
+
+	std::cout << serialize.GetJson().dump(1) << "\n";
+}
+
 /* Saves our save file into local machine storage */
 void Serialization::Save(const std::string& path)
 {
@@ -34,6 +63,10 @@ void Serialization::Load(const std::string& path)
 const nlohmann::json Serialization::GetJson() const
 {
 	return m_Json;
+}
+ConfigInterface* Serialization::operator[](const std::string& name)
+{
+	return m_DataSave[name];
 }
 /* Creates a ConfigInteger variable */
 ConfigInteger& Serialization::CreateInt(const std::string& name, int value)
