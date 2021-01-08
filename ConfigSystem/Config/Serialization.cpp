@@ -9,23 +9,22 @@ void Serialization::LoadExample()
 	Serialization serialize;
 	/* Initiliaze the wanted variables */
 
-	ConfigInteger& health = serialize.CreateInt("Health", 100);
-	ConfigFloat& speed = serialize.CreateFloat("Speed", 184.54f);
-	ConfigString& name = serialize.CreateString("Username", "Johnnyyyyy");
-	ConfigCustom& customType = serialize.CreateCustom("CustomTypeExample", { 76.7f, 436.3f, 8677.3f });
-	ConfigBool& rememberMe = serialize.CreateBool("Remember me", true);
+	int& health = serialize.CreateInt("Health", 100);
+	float& speed = serialize.CreateFloat("Speed", 184.54f);
+	bool& rememberMe = serialize.CreateBool("Remember me", true);
+	std::string& name = serialize.CreateString("Username", "Johnnyyyyy");
+	Custom& customType = serialize.CreateCustom("CustomTypeExample", { 76.7f, 436.3f, 8677.3f });
 
 	/* Loads the saved data from our storage */
 	serialize.Load();
 
 	/* Modify variables after the Serialization::Load(); */
-	health = 54;
+	health = 9898;
 	speed = 848.4f;
 
 	/* Example of a cast */
-	ConfigString* castedName = dynamic_cast<ConfigString*>(serialize["Username"]);
-	if (castedName != nullptr)
-		*castedName = "Max";
+	ConfigString& castedName = serialize.Get<ConfigString>("Username");
+	castedName = "Max";
 
 	/* Call save whenever you want to save the data */
 	serialize.Save();
@@ -37,7 +36,7 @@ void Serialization::LoadExample()
 void Serialization::Save(const std::string& path)
 {
 	/* Loops through our data collection and calls Write on every created ConfigInterface */
-	for (auto& index : m_DataSave) {
+	for (const auto& index : m_DataSave) {
 		index.second->Write(m_Json);
 	}
 	/* Calls the function to write to file */
@@ -53,9 +52,8 @@ void Serialization::Load(const std::string& path)
 	/* Parses fromDisk into JSON */
 	m_Json = nlohmann::json::parse(fromDisk);
 	/* Loops through our created variables and calls Read for ConfigInterface */
-	for (auto& index : m_DataSave) {
-		if (index.second != nullptr)
-			index.second->Read(m_Json);
+	for (const auto& index : m_DataSave) {
+		index.second->Read(m_Json);
 	}
 
 }
@@ -64,10 +62,7 @@ const nlohmann::json Serialization::GetJson() const
 {
 	return m_Json;
 }
-ConfigInterface* Serialization::operator[](const std::string& name)
-{
-	return m_DataSave[name];
-}
+
 /* Creates a ConfigInteger variable */
 ConfigInteger& Serialization::CreateInt(const std::string& name, int value)
 {
