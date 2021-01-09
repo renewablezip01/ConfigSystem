@@ -14,6 +14,7 @@ void Serialization::LoadExample()
 	bool& rememberMe = serialize.CreateBool("Remember me", true);
 	std::string& name = serialize.CreateString("Username", "Johnnyyyyy");
 	Custom& customType = serialize.CreateCustom("CustomTypeExample", { 76.7f, 436.3f, 8677.3f });
+	ConfigVector<std::string>& Phrases = serialize.CreateVector<std::string>("Phrases", { "Hello there", "I see you", "Yes" });
 
 	/* Loads the saved data from our storage */
 	serialize.Load();
@@ -21,10 +22,15 @@ void Serialization::LoadExample()
 	/* Modify variables after the Serialization::Load(); */
 	health = 9898;
 	speed = 848.4f;
+	Phrases.PushBackOnce("Pushed back once"); /* Pushes an element back once into the vector. */
 
 	/* Example of a cast */
 	ConfigString& castedName = serialize.Get<ConfigString>("Username");
 	castedName = "Max";
+
+	for (const std::string& player : (std::vector<std::string>&)Phrases) {
+		/* Loop through the ConfigVector */
+	}
 
 	/* Call save whenever you want to save the data */
 	serialize.Save();

@@ -4,6 +4,7 @@
 #include "Config/Types/String/ConfigString.h"
 #include "Config/Types/Custom/ConfigCustom.h"
 #include "Config/Types/Bool/ConfigBool.h"
+#include "Config/Types/Vector/ConfigVector.h"
 
 /// <summary>
 /// Serializes our variables into a local file
@@ -38,6 +39,11 @@ public:
 	ConfigString& CreateString(const std::string& name, const std::string& value);
 	ConfigCustom& CreateCustom(const std::string& name, Custom value);
 
+	template<typename Type>
+	ConfigVector<Type>& CreateVector(const std::string& name, const std::vector<Type>& value) {
+		return *new ConfigVector<Type>(this->m_DataSave, name, value);
+	}
+
 
 private:
 
@@ -48,4 +54,3 @@ private:
 	/* All our creates variables goes into this collection. Will be used to loop through it for Saving/Loading */
 	std::unordered_map<std::string, ConfigInterface*> m_DataSave = std::unordered_map<std::string, ConfigInterface*>();
 };
-

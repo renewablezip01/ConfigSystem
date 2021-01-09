@@ -71,5 +71,8 @@
     <ClInclude Include="Config\Types\ConfigInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Config\Types\Vector\ConfigVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

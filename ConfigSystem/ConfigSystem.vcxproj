@@ -167,6 +167,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Config\Types\Vector\ConfigVector.h" />
     <ClInclude Include="Config\Types\Bool\ConfigBool.h" />
     <ClInclude Include="Config\Types\Custom\ConfigCustom.h" />
     <ClInclude Include="Config\Types\String\ConfigString.h" />

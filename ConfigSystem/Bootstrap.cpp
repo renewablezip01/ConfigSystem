@@ -4,6 +4,5 @@
 int main() {
 	Serialization::LoadExample();
 
-
 	return 0;
 }
